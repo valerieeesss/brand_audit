@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#091013" />
+    <meta name="description" content="Cloudflare-native AI brand audit workspace." />
+    <title>Brand Audit Workspace</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="topbar">
+        <div class="brand"><span class="brand-mark">✦</span><span>BRAND AUDIT</span></div>
+        <div class="topbar-meta"><span class="engine-dot" id="engine-dot"></span><span id="engine-label">CLOUDFLARE WORKER</span><span class="meta-divider">/</span><span>OPENAI DIRECT</span></div>
+        <div class="version">v0.1</div>
+      </header>
+
+      <main class="page-content">
+        <section class="intro-block">
+          <div class="eyebrow">AI SEARCH VISIBILITY WORKSPACE</div>
+          <h1>Turn brand context<br />into <span>usable signals.</span></h1>
+          <p>Run grounded brand research, map the questions your audience asks, and create content assets your team can use.</p>
+        </section>
+
+        <section class="flow-heading" aria-label="Audit workflow">
+          <span>01 / INPUT</span><span class="flow-line"></span><span>02 / RUN</span><span class="flow-line"></span><span>03 / DOWNLOAD</span>
+        </section>
+
+        <section class="workflow-grid">
+          <article class="stage-card input-card">
+            <div class="stage-topline"><span class="stage-number">01</span><span class="stage-label">INPUT</span></div>
+            <div class="card-heading"><h2>Audit brief</h2><span class="card-status">READY</span></div>
+            <div class="form-layout">
+              <label class="field"><span>BRAND NAME</span><input id="brand" type="text" placeholder="e.g. Reckon" /></label>
+              <label class="field"><span>TARGET NICHE</span><input id="niche" type="text" placeholder="e.g. accounting software" /></label>
+              <label class="field full-field"><span>OFFICIAL WEBSITE <em>OPTIONAL EXCEPT AI INFO</em></span><input id="url" type="url" placeholder="https://example.com" /></label>
+              <p class="input-note">The Worker fetches a small homepage context before the web-grounded modules run. No API key is sent to the browser.</p>
+            </div>
+            <button class="primary-button" id="run-all" type="button"><span>▷ RUN ALL MODULES</span><span>↗</span></button>
+            <p class="form-error hidden" id="form-error"></p>
+          </article>
+
+          <div class="connector" aria-hidden="true"><span></span><b>→</b></div>
+
+          <article class="stage-card process-card">
+            <div class="stage-topline"><span class="stage-number">02</span><span class="stage-label">RUN</span></div>
+            <div class="card-heading"><h2>Audit modules</h2><span class="card-status muted" id="process-status">WAITING</span></div>
+            <div class="process-list">
+              <button class="process-item" data-module="bmf" type="button"><span class="process-icon">01</span><div><strong>Brand Messaging Framework</strong><small>Company, market, and positioning context</small></div><span class="process-state">RUN</span></button>
+              <button class="process-item" data-module="pain_points" type="button"><span class="process-icon">02</span><div><strong>Pain Point Questions</strong><small>Decision-stage prompts by intent</small></div><span class="process-state">RUN</span></button>
+              <button class="process-item" data-module="faqs" type="button"><span class="process-icon">03</span><div><strong>Home Page FAQs</strong><small>Review-led questions and answers</small></div><span class="process-state">RUN</span></button>
+              <button class="process-item" data-module="info" type="button"><span class="process-icon">04</span><div><strong>AI Info Page</strong><small>Structured official information page</small></div><span class="process-state">RUN</span></button>
+            </div>
+            <div class="progress-track"><span id="progress-fill"></span></div>
+            <div class="progress-caption"><span id="progress-label">READY TO RUN</span><strong id="progress-value">0%</strong></div>
+          </article>
+
+          <div class="connector" aria-hidden="true"><span></span><b>→</b></div>
+
+          <article class="stage-card output-card">
+            <div class="stage-topline"><span class="stage-number">03</span><span class="stage-label">DOWNLOAD</span></div>
+            <div class="card-heading"><h2>Your outputs</h2><span class="card-status muted" id="output-status">PENDING</span></div>
+            <div class="output-list" id="output-list"><div class="output-placeholder"><span class="output-orbit">✦</span><strong>Reports will appear here</strong><p>Run one module or the full audit to unlock downloads.</p></div></div>
+          </article>
+        </section>
+
+        <section class="footer-note"><span class="footer-mark">✦</span><span>Grounded in your inputs. Built for the next conversation.</span><span class="footer-rule"></span><span id="status-note">Checking Worker connection…</span></section>
+      </main>
+    </div>
+    <script type="module" src="/app.js"></script>
+  </body>
+</html>

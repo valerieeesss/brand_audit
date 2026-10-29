@@ -1,0 +1,14 @@
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "name": "brand-audit-cloudflare",
+  "main": "./src/index.js",
+  "compatibility_date": "2026-10-29",
+  "assets": {
+    "directory": "./public",
+    "binding": "ASSETS",
+    "not_found_handling": "single-page-application"
+  },
+  "secrets": {
+    "required": ["OPENAI_API_KEY"]
+  }
+}
