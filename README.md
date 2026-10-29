@@ -1,6 +1,6 @@
 # Brand Audit Cloudflare
 
-Cloudflare-native replacement for the former hosted brand-audit app.
+Cloudflare-native brand-audit workspace.
 
 ## What changed
 
