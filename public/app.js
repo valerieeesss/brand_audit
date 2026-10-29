@@ -43,8 +43,17 @@ function validate(module = "") {
   return "";
 }
 
-function download(content, name, type) {
-  const blob = new Blob([content], { type });
+function downloadBytes(base64, name, type) {
+  const binary = atob(base64);
+  const chunkSize = 0x8000;
+  const chunks = [];
+  for (let index = 0; index < binary.length; index += chunkSize) {
+    const chunk = binary.slice(index, Math.min(index + chunkSize, binary.length));
+    const bytes = new Uint8Array(chunk.length);
+    for (let offset = 0; offset < chunk.length; offset += 1) bytes[offset] = chunk.charCodeAt(offset);
+    chunks.push(bytes);
+  }
+  const blob = new Blob(chunks, { type });
   const link = document.createElement("a");
   link.href = URL.createObjectURL(blob);
   link.download = name;
@@ -69,8 +78,7 @@ function renderOutputs() {
     <div class="output-item">
       <strong>${result.label}</strong>
       <div class="output-actions">
-        <button class="primary-button download-button" data-download="md" data-module="${module}" type="button">↓ Markdown</button>
-        <button class="primary-button download-button secondary" data-download="json" data-module="${module}" type="button">↓ JSON</button>
+        <button class="primary-button download-button" data-download="xlsx" data-module="${module}" type="button">↓ Download XLSX</button>
       </div>
     </div>
   `).join("");
@@ -155,9 +163,9 @@ outputList.addEventListener("click", (event) => {
   if (!button) return;
   const result = state.results.get(button.dataset.module);
   if (!result) return;
-  const base = `${slug(brandInput.value)}-${button.dataset.module}`;
-  if (button.dataset.download === "json") download(JSON.stringify(result, null, 2), `${base}.json`, "application/json");
-  else download(`# ${result.label}\n\n${result.content.trim()}\n`, `${base}.md`, "text/markdown");
+  if (button.dataset.download === "xlsx" && result.xlsx) {
+    downloadBytes(result.xlsx.data, result.xlsx.filename, result.xlsx.contentType);
+  }
 });
 
 async function checkHealth() {

@@ -8,7 +8,7 @@ Cloudflare-native brand-audit workspace.
 - The workspace focuses on four core audit modules and has no external search-runner dependency.
 - The useful modules remain: Brand Messaging Framework, Pain Point Questions, Home Page FAQs, and AI Info Page.
 - The frontend uses the dark graphite / green ICP Simulator visual language.
-- Results are downloaded as Markdown or JSON directly from the browser.
+- Each module returns its own decorated `.xlsx` workbook with a black title bar, green section/header bands, wrapped cells, borders, and alternating rows.
 
 ## Local setup
 
